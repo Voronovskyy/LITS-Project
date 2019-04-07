@@ -6,6 +6,8 @@ public class Product {
 
     private double price;
 
+    private String currency;
+
 
     public String getName() {
         return name;
@@ -24,26 +26,35 @@ public class Product {
         this.price = price;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
 
-    public Product(String name, double price) {
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+    public Product(String name, double price, String currency ) {
         this.name = name;
         this.price = price;
+        this.currency = currency;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPrice(), getCurrency());
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
-        Product person = (Product) o;
-        return getPrice() == person.getPrice() &&
-                getName().equals(person.getName());
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getPrice());
+        Product product = (Product) o;
+        return getPrice() == product.getPrice() &&
+                getName().equals(product.getName()) &&
+                getCurrency().equals(product.getCurrency());
     }
 
     public String toString() {
-        return this.name + "   " + this.price ;
+        return this.name + "   " + this.price + " " + this.currency;
     }
 }
 

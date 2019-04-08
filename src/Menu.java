@@ -15,16 +15,24 @@ public class Menu {
             String menu = sc.nextLine();
 
             if(menu.equalsIgnoreCase("Food")) {
+                text.header();
                 itemList.getFood().forEach(food -> System.out.println(food));
+                text.footer();
                 text.hint();
             }else if(menu.equalsIgnoreCase("Drink")){
+                text.header();
                 itemList.getDrink().forEach(drink -> System.out.println(drink));
+                text.footer();
                 text.hint();
             }else if(menu.equalsIgnoreCase("Household")){
+                text.header();
                 itemList.getHousehold().forEach(household -> System.out.println(household));
+                text.footer();
                 text.hint();
             }else if(menu.equalsIgnoreCase("Electronics")) {
+                text.header();
                 itemList.getElectronics().forEach(electronics -> System.out.println(electronics));
+                text.footer();
                 text.hint();
             }else if(menu.equals("M")){
                 text.menuList();
@@ -32,7 +40,9 @@ public class Menu {
                 String name = sc.nextLine();
                 try {
                     Product addProduct = itemList.getByName(name);
-                    System.out.println(addProduct);
+
+                    System.out.println("You're adding " + name + " to the basket.");
+
                     basket.add(addProduct);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
@@ -41,7 +51,7 @@ public class Menu {
                 String name = sc.nextLine();
                 try {
                     Product removeProduct = itemList.getByName(name);
-                    System.out.println(removeProduct);
+                    System.out.println("You've removed " + name + " from the basket.");
                     basket.remove(removeProduct);
                     ((ArrayList<Product>) basket).trimToSize();
                 } catch (Exception e) {
@@ -49,9 +59,11 @@ public class Menu {
                 }
             }
             else if(menu.equalsIgnoreCase("Basket")){
+                text.header();
                 for(Product basketList: basket){
                     System.out.println(basketList);
-                }
+                  }
+                text.footer();
             }else if(menu.equalsIgnoreCase("Exit")){
 //                for(Product basketList: basket){
 //                    System.out.println(basketList);
@@ -60,7 +72,7 @@ public class Menu {
                 text.bye();
                 break;
             }else{
-                System.err.println("No such directory. Please try again");
+                System.err.println("No such directory. Please, try again");
             }
         }
         sc.close();

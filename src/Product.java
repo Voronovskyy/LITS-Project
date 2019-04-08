@@ -8,6 +8,7 @@ public class Product {
 
     private String currency;
 
+    private static final String PATTERN = "║ %-20s │ %-10s │ %-3s ║";
 
     public String getName() {
         return name;
@@ -54,7 +55,7 @@ public class Product {
     }
 
     public String toString() {
-        return this.name + "   " + this.price + " " + this.currency;
+        return String.format(PATTERN,this.name, this.price,this.currency);
     }
 }
 
